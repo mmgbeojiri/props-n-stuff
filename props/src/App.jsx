@@ -12,6 +12,8 @@ function App() {
   const [listOfCategory, setVideoCatagories] = useState([])
 
 
+  const [mainCategory, setmaincat] = useState("");
+
   return (
     <>
     <header>
@@ -32,16 +34,23 @@ function App() {
       </header>
 
       {console.log(listOfCategory + "video cartecogry is" + videoCategory)}
+
+      <h1>List of categories:</h1>
+      {
+      listOfCategory.map((category, cateIndex) => (
+        <button onClick={() => setmaincat(category)}>{category}</button>
+      ))
+      }
       
       {
         listOfCategory.map((category, cateIndex) => (
           <>
           <h1>{category}</h1>
-          <div>
+          <div id={"category_"+category} className="categories" key={cateIndex}>
             {listOfVideos.map((videoObject, index) => (
               <div className="card">
                 
-                {videoObject.category == category ? <><button>Delete</button><Video src={videoObject.src} key={index} /></> : ""}
+                {videoObject.category == category ? <><button onClick={() => {listOfVideos.splice(index, 1); console.log("del;eteedd")}}>Delete</button><Video src={videoObject.src} key={index} /></> : ""}
               </div>
             ))}
           </div>
