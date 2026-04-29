@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+* {
+  @apply box-border duration-100
+}
+
+body {
+  @apply m-0
+}
+
+header {
+  @apply inline-flex p-7 bg-red-50 w-full justify-between
+}
+
+header h1 {
+  @apply text-2xl inline font-bold;
+}
+
+header input[href=]
