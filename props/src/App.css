@@ -5,15 +5,77 @@
 }
 
 body {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   @apply m-0
 }
 
 header {
-  @apply inline-flex p-7 bg-red-50 w-full justify-between
+  @apply inline-flex p-7 bg-red-50 w-full justify-between items-center
 }
 
 header h1 {
   @apply text-2xl inline font-bold;
 }
 
-header input[href=]
+header input {
+  @apply bg-white p-2 rounded-xl border border-red-100 flex flex-1
+}
+
+header form {
+  @apply flex flex-1 gap-1 max-w-[50%]
+}
+
+header #urlSearch {
+  @apply flex-3
+}
+
+header input[type="button"] {
+  @apply !bg-red-300 border-red-600 font-bold text-white
+}
+
+#cateSelect {
+  @apply border-1 border-slate-200 bg-slate-100
+}
+
+#cateSelect h1 {
+  @apply font-bold mx-4 text-xl mt-4
+}
+#cateSelect button {
+  @apply shadow p-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-white
+}
+
+#cateSelect .active-button {
+  @apply shadow-xl -translate-y-1 translate-x-1 font-semibold
+}
+
+#buttonInCateSelect {
+  @apply flex gap-2 p-4
+}
+
+#videoContainer {
+  @apply max-w-screen flex flex-wrap justify-center gap-2 p-2
+}
+
+#videoContainer .card {
+  @apply rounded p-3 bg-slate-50 border-slate-200 border
+}
+
+footer {
+  @apply bg-slate-100 border border-slate-200 p-3
+}
+
+footer h2 {
+  @apply font-bold text-xl 
+}
+.card {
+  @apply flex gap-3 flex-row
+}
+.delete {
+  @apply bg-red-200 border border-red-500 text-sm font-bold px-1 text-white rounded
+}
+footer hr{
+  @apply border-slate-300
+}
+textarea {
+  @apply w-full border border-slate-200 shadow resize-y rounded p-2
+}
