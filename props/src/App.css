@@ -40,7 +40,7 @@ header input[type="button"] {
 #cateSelect h1 {
   @apply font-bold mx-4 text-xl mt-4
 }
-#cateSelect button {
+#buttonInCateSelect div {
   @apply shadow p-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-white
 }
 
@@ -50,6 +50,10 @@ header input[type="button"] {
 
 #buttonInCateSelect {
   @apply flex gap-2 p-4
+}
+
+#cateSelect .deleteSmall {
+  @apply py-1 px-3 bg-red-300 border-red-500 text-white ml-1 rounded-[50%] hover:bg-red-200
 }
 
 #videoContainer {

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -7,12 +7,29 @@ import './App.css'
 
 function App() {
   const [userInput, setUserInput] = useState("");
-  const [listOfVideos, setList] = useState([]);
   const [videoCategory, setVideoCatagory] = useState("");
-  const [listOfCategory, setVideoCatagories] = useState([])
 
+ 
+  const [listOfVideos, setList] = useState(() => {
+    let saved = JSON.parse(localStorage.getItem('listOfVideos'));
+    return saved || []; // Fallback to empty string
+  });
+  const [listOfCategory, setVideoCatagories] = useState(() => {
+    let saved = JSON.parse(localStorage.getItem('listOfCategory'));
+    return saved || []; // Fallback to empty string
+  });
 
   const [mainCategory, setmaincat] = useState("");
+
+  
+  useEffect(() => {
+    localStorage.setItem('listOfVideos', JSON.stringify(listOfVideos));
+  }, ['listOfVideos', listOfVideos]);
+
+  useEffect(() => {
+    localStorage.setItem('listOfCategory', JSON.stringify(listOfCategory));
+  }, ['listOfCategory', listOfCategory]);
+
 
   return (
     <>
@@ -27,7 +44,9 @@ function App() {
             listOfCategory.includes(videoCategory) ? listOfCategory : [...listOfCategory, videoCategory]
           );
           setList([...listOfVideos, {"src": userInput, "category": videoCategory}]);
-          setmaincat(videoCategory)
+          setmaincat(videoCategory);
+          
+
         }
         } />
       </form>
@@ -39,7 +58,16 @@ function App() {
       <div id="buttonInCateSelect">
       {
       listOfCategory.map((category, cateIndex) => (
-        <button className={category == mainCategory ? "active-button" : ""} onClick={() => setmaincat(category)}>{category}</button>
+        <div key={cateIndex} className={category == mainCategory ? "active-button" : ""} onClick={() => setmaincat(category)}>
+          {category}
+            <button className="deleteSmall" 
+            onClick={ ()=>{
+              let templist = listOfCategory;
+               templist.splice(cateIndex, 1); 
+               setVideoCatagories(templist);
+              }
+               }>X</button>
+          </div>
       ))
       }
       </div>
