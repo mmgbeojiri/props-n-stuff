@@ -24,11 +24,18 @@ function App() {
   
   useEffect(() => {
     localStorage.setItem('listOfVideos', JSON.stringify(listOfVideos));
+    
   }, ['listOfVideos', listOfVideos]);
 
   useEffect(() => {
     localStorage.setItem('listOfCategory', JSON.stringify(listOfCategory));
   }, ['listOfCategory', listOfCategory]);
+
+  useEffect(() => {
+    if (listOfCategory.length > 0) {
+      setmaincat(listOfCategory[0])
+    }
+  }, []);
 
 
   return (
